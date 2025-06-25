@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Conta</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
+        body { font-family: Arial, sans-serif; text-align: center;background-color: #D6EAF8;/* azul clarinho bebê */
+  color: #333333; }
         form { margin: 20px auto; width: 300px; padding: 20px; border: 1px solid #ccc; }
         input, select { width: 100%; padding: 10px; margin: 10px 0; }
         button { background-color: #28a745 !important; color: white; padding: 10px; border: none; cursor: pointer; }
@@ -16,6 +17,12 @@
     </style>
 </head>
 <body>
+<!-- Imagem separada -->
+<a href="index.html">
+                 
+                    <img src="iPad mini 8.3 - 1.png" alt="Ipad"></img>
+                    
+
     <h2>Calculadora de Conta</h2>
     <form id="formConta">
         <label for="numPessoas">Número de pessoas:</label>
@@ -29,10 +36,48 @@
     <option value="PIX">PIX</option>
     <option value="dinheiro">Dinheiro</option>
     <option value="cartao">Cartão</option>
-</select>
+   </select>
 
-<!-- Imagem separada -->
-<a href="index.html">
-                 
-                    <img src="iPad mini 8.3 - 1.png" alt="Ipad">
+    <button type="submit">Calcular</button>
+    </form>
 
+   <div id="resultado" class="recibo"></div>
+
+<script>
+document.getElementById("formConta").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const numPessoas = parseInt(document.getElementById("numPessoas").value);
+  const metodo = document.getElementById("metodoPagamento").value;
+  let valorTotal = parseFloat(document.getElementById("valorTotal").value);
+  let valorFinal = valorTotal;
+  let ajusteMsg = "";
+
+  if (numPessoas > 0 && valorTotal >= 0) {
+    if (metodo === "cartao") {
+      valorFinal *= 1.05;
+      ajusteMsg = "Acréscimo de 5% aplicado";
+    } else if (metodo === "PIX" || metodo === "dinheiro") {
+      valorFinal *= 0.90;
+      ajusteMsg = "Desconto de 10% aplicado";
+    }
+
+    const valorPorPessoa = (valorFinal / numPessoas).toFixed(2);
+
+    document.getElementById("resultado").textContent = 
+
+`RECIBO DE DIVISÃO 
+Total original:     R$ ${valorTotal.toFixed(2)}
+Método:             ${metodo}
+${ajusteMsg}
+Total ajustado:     R$ ${valorFinal.toFixed(2)}
+Número de pessoas:  ${numPessoas}
+-------------------------------
+Cada pessoa paga:   R$ ${valorPorPessoa}
+===============================`;
+  } else {
+    alert("Por favor, insira valores válidos.");
+  }
+});
+
+</script>

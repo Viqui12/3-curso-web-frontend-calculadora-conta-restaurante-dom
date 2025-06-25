@@ -1,15 +1,4 @@
-button {
-    background-color: #007BFF;
-    color: white;
-    padding: 12px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-}
-button:hover {
-    background-color: #0056b3;
-}
+
 #resultado {
     margin-top: 20px;
     font-size: 18px;
@@ -21,5 +10,26 @@ input, select {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+body {
+  font-family: Arial, sans-serif;
+    text-align: center;
+  background-color:#D6EAF8; /* azul clarinho de fundo */
+  color: #333333; /* cor escura para o texto ficar legível */
+}
+.recibo {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px dashed #28a745;
+  padding: 15px;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  width: 80%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: pre-line;
+  
 }
 
